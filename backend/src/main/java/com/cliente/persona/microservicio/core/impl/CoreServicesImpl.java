@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class CoreServicesImpl implements CoreServices {
@@ -40,57 +39,75 @@ public class CoreServicesImpl implements CoreServices {
 
     @Override
     public ResponseEntity<Object> obtenerUsuario(final String identificacion){
-        PersonaEntity persona = personaService.obtenerPersona(identificacion);
-        ClienteEntity clienteEntity = clienteService.obtenerCliente(identificacion);
-        ResponseDto requestDto = new ResponseDto();
-        requestDto.setGenero(persona.getGenero());
-        requestDto.setEdad(persona.getEdad());
-        requestDto.setEstado(clienteEntity.getEstado());
-        requestDto.setDireccion(persona.getDireccion());
-        requestDto.setIdentificacion(persona.getIdentificacion());
-        requestDto.setNombre(persona.getNombre());
-        requestDto.setTelefono(persona.getTelefono());
+        try{
+            PersonaEntity persona = personaService.obtenerPersona(identificacion);
+            ClienteEntity clienteEntity = clienteService.obtenerCliente(persona.getId());
+            ResponseDto requestDto = new ResponseDto();
+            requestDto.setGenero(persona.getGenero());
+            requestDto.setEdad(persona.getEdad());
+            requestDto.setEstado(clienteEntity.getEstado());
+            requestDto.setDireccion(persona.getDireccion());
+            requestDto.setIdentificacion(persona.getIdentificacion());
+            requestDto.setNombre(persona.getNombre());
+            requestDto.setTelefono(persona.getTelefono());
             return ObtenerClienteResponse(requestDto);
+        } catch (Exception e) {
+            return buildResponseError(e.getMessage());
+        }
+
     }
 
     @Override
     public  ResponseEntity<Object> crearUsuario(final CreateRequestDto createRequestDto){
-        PersonaEntity persona = new PersonaEntity();
-        ClienteEntity cliente = new ClienteEntity();
-        persona.setDireccion(createRequestDto.getDireccion());
-        persona.setEdad(createRequestDto.getEdad());
-        persona.setNombre(createRequestDto.getNombre());
-        persona.setTelefono(createRequestDto.getTelefono());
-        persona.setIdentificacion(createRequestDto.getIdentificacion());
-        persona.setGenero(createRequestDto.getGenero());
+        try {
+            ClienteEntity cliente = new ClienteEntity();
 
-        cliente.setEstado(createRequestDto.getEstado());
-        cliente.setContrasena(createRequestDto.getContrasena());
+            cliente.setDireccion(createRequestDto.getDireccion());
+            cliente.setEdad(createRequestDto.getEdad());
+            cliente.setNombre(createRequestDto.getNombre());
+            cliente.setTelefono(createRequestDto.getTelefono());
+            cliente.setIdentificacion(createRequestDto.getIdentificacion());
+            cliente.setGenero(createRequestDto.getGenero());
 
-        personaService.crearPersona(persona);
-        clienteService.crearCliente(cliente);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Se creo el usuario");
+            cliente.setEstado(createRequestDto.getEstado());
+            cliente.setContrasena(createRequestDto.getContrasena());
+            clienteService.crearCliente(cliente);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Se creó el usuario");
+        } catch (Exception e) {
+            return buildResponseError(e.getMessage());
+        }
     }
 
     @Override
     public ResponseEntity<Object> eliminarUsuario(final String documento) {
-        personaService.eliminarPersona(documento);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        try {
+            PersonaEntity persona = personaService.obtenerPersona(documento);
+            personaService.eliminarPersona(persona.getIdentificacion());
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } catch (Exception e) {
+            return buildResponseError(e.getMessage());
+        }
+
     }
 
     @Override
-    public ResponseEntity<Object> actualizarUsuario(final CreateRequestDto createRequestDto) {
-        PersonaEntity persona = personaService.obtenerPersona(createRequestDto.getIdentificacion());
-        ClienteEntity clienteEntity = clienteService.obtenerCliente(createRequestDto.getIdentificacion());
-        ResponseDto requestDto = new ResponseDto();
-        requestDto.setGenero(persona.getGenero());
-        requestDto.setEdad(persona.getEdad());
-        requestDto.setEstado(clienteEntity.getEstado());
-        requestDto.setDireccion(persona.getDireccion());
-        requestDto.setIdentificacion(persona.getIdentificacion());
-        requestDto.setNombre(persona.getNombre());
-        requestDto.setTelefono(persona.getTelefono());
-        return ResponseEntity.status(HttpStatus.OK).body("Se actualizo el usuario");
+    public ResponseEntity<Object> actualizarUsuario(final String identificacion, final CreateRequestDto createRequestDto) {
+        try {
+            PersonaEntity persona = personaService.obtenerPersona(identificacion);
+            ClienteEntity cliente = clienteService.obtenerCliente(persona.getId());
+            cliente.setDireccion(createRequestDto.getDireccion());
+            cliente.setEdad(createRequestDto.getEdad());
+            cliente.setNombre(createRequestDto.getNombre());
+            cliente.setTelefono(createRequestDto.getTelefono());
+            cliente.setIdentificacion(createRequestDto.getIdentificacion());
+            cliente.setGenero(createRequestDto.getGenero());
+            cliente.setEstado(createRequestDto.getEstado());
+            cliente.setContrasena(createRequestDto.getContrasena());
+            clienteService.crearCliente(cliente);
+            return ResponseEntity.status(HttpStatus.OK).body("Se actualizo el usuario");
+        } catch (Exception e) {
+            return buildResponseError(e.getMessage());
+        }
     }
 
 

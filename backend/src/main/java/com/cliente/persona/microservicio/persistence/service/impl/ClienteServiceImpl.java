@@ -27,8 +27,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ClienteEntity actualizarCliente(final String identificacion, ClienteEntity clienteDetalles) {
-        ClienteEntity cliente = clienteRepository.findByIdentificacion(identificacion)
+    public  ClienteEntity actualizarCliente(Long idCliente, ClienteEntity clienteDetalles) {
+        ClienteEntity cliente = clienteRepository.findById(idCliente)
                 .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
         cliente.setContrasena(clienteDetalles.getContrasena());
         cliente.setEstado(clienteDetalles.getEstado());
@@ -36,8 +36,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ClienteEntity obtenerCliente(final String identificacion) {
-        return clienteRepository.findByIdentificacion(identificacion)
+    public ClienteEntity obtenerCliente(final Long identificacion) {
+        return clienteRepository.findById(identificacion)
                 .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
     }
 }

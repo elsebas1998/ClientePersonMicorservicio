@@ -11,8 +11,8 @@ public interface ClienteRepository extends JpaRepository <ClienteEntity, Long> {
 
     /**
      * Busca un cliente por medio de su identificador
-     * @param identificacion parametro para bucar al cliente
+     * @param idCliente parametro para bucar al cliente
      * @return un objeto de clienteEntity
      */
-     Optional<ClienteEntity> findByIdentificacion(final String identificacion);
+     Optional<ClienteEntity> findById(final Integer idCliente);
 }

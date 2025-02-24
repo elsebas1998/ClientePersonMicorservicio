@@ -12,21 +12,21 @@ public class UsuarioController {
     @Autowired
     private CoreServices coreServices;
 
-    @GetMapping("obtener")
-    public ResponseEntity<Object> obtenerUsuario(@PathVariable final String identificacion ){
+    @GetMapping("/obtener/{identificacion}")
+    public ResponseEntity<Object> obtenerUsuario(@PathVariable String identificacion) {
         return coreServices.obtenerUsuario(identificacion);
     }
-    @PostMapping("crear")
-    public ResponseEntity<Object> crearUsuario(final CreateRequestDto createRequestDto){
+    @PostMapping("/crear")
+    public ResponseEntity<Object> crearUsuario(@RequestBody final CreateRequestDto createRequestDto){
        return coreServices.crearUsuario(createRequestDto);
     }
 
-    @PutMapping("actualizar")
-    public ResponseEntity<Object> actualizarUsuario(final CreateRequestDto createRequestDto){
-        return coreServices.actualizarUsuario(createRequestDto);
+    @PutMapping("/actualizar/{identificacion}")
+    public ResponseEntity<Object> actualizarUsuario(@PathVariable String identificacion, @RequestBody CreateRequestDto createRequestDto) {
+        return coreServices.actualizarUsuario(identificacion, createRequestDto);
     }
 
-    @DeleteMapping("eliminar")
+    @DeleteMapping("/eliminar/{identificacion}")
     public ResponseEntity<Object> eliminarUsuario(@PathVariable final String identificacion){
         return coreServices.eliminarUsuario(identificacion);
     }

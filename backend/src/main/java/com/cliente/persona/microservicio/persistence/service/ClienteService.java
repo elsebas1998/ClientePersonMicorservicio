@@ -21,15 +21,15 @@ public interface ClienteService {
     ClienteEntity crearCliente(ClienteEntity clienteDto);
     /**
      * Actualiza un cliente mediante sus respectivos campos.
-     * @param identificacion parametro para obtener al cliente
+     * @param idCliente parametro para obtener al cliente
      * @return el objeto de ClienteEntity
      */
-    ClienteEntity actualizarCliente(String identificacion, ClienteEntity clienteDetalles);
+    ClienteEntity actualizarCliente(Long idCliente, ClienteEntity clienteDetalles);
 
     /**
      * Obtiene un cliente mediante su codigo identificador
      * @param identificacion parametro para obtener al cliente
      * @return el objeto de ClienteEntity
      */
-    ClienteEntity obtenerCliente(String identificacion);
+    ClienteEntity obtenerCliente(final Long identificacion);
 }

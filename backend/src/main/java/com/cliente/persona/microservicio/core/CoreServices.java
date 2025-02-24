@@ -11,5 +11,5 @@ public interface CoreServices {
 
     ResponseEntity<Object> eliminarUsuario(String documento);
 
-    ResponseEntity<Object> actualizarUsuario(CreateRequestDto createRequestDto);
+    ResponseEntity<Object> actualizarUsuario(final String identificacion, final CreateRequestDto createRequestDto);
 }
