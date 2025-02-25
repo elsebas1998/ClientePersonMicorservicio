@@ -19,7 +19,7 @@ public class CreateRequestDto {
 
     private String contrasena;
 
-    private String estado;
+    private Boolean estado;
 
     public String getNombre() {
         return nombre;
@@ -77,11 +77,11 @@ public class CreateRequestDto {
         this.contrasena = contrasena;
     }
 
-    public String getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 }

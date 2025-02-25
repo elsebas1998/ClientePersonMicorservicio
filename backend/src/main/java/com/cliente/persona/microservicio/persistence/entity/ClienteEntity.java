@@ -10,11 +10,18 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class ClienteEntity extends PersonaEntity {
     private String contrasena;
-    private String estado;
+    private Boolean estado;
+
+    public ClienteEntity(String contrasena, Boolean estado) {
+        this.contrasena = contrasena;
+        this.estado = estado;
+    }
+
+    public ClienteEntity(){
+
+    }
 
     public String getContrasena() {
         return contrasena;
@@ -24,11 +31,11 @@ public class ClienteEntity extends PersonaEntity {
         this.contrasena = contrasena;
     }
 
-    public String getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 }

@@ -1,23 +1,34 @@
 package com.cliente.persona.microservicio.dto;
 
-import lombok.Data;
-import org.antlr.v4.runtime.misc.NotNull;
-@Data
-public class ResponseDto {
-    @NotNull
+public class ClienteInfoResponse {
+    private String requestId;
+    private Long clienteId;
     private String nombre;
-    @NotNull
     private String genero;
-    @NotNull
     private int edad;
-    @NotNull
     private String identificacion;
-    @NotNull
     private String direccion;
-    @NotNull
     private String telefono;
-    @NotNull
-    private Boolean estado;
+    private boolean estado;
+
+    public ClienteInfoResponse() {
+    }
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
+    public Long getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
+    }
 
     public String getNombre() {
         return nombre;
@@ -67,11 +78,11 @@ public class ResponseDto {
         this.telefono = telefono;
     }
 
-    public Boolean getEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 }
