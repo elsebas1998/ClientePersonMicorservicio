@@ -1,7 +1,7 @@
 package com.cliente.persona.microservicio.controller;
 
 import com.cliente.persona.microservicio.core.CoreServices;
-import com.cliente.persona.microservicio.dto.CreateRequestDto;
+import com.cliente.persona.microservicio.Dto.CreateRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

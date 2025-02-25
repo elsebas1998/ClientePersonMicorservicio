@@ -2,8 +2,8 @@ package com.cliente.persona.microservicio.core.impl;
 
 
 import com.cliente.persona.microservicio.core.CoreServices;
-import com.cliente.persona.microservicio.dto.CreateRequestDto;
-import com.cliente.persona.microservicio.dto.ResponseDto;
+import com.cliente.persona.microservicio.Dto.CreateRequestDto;
+import com.cliente.persona.microservicio.Dto.ResponseDto;
 import com.cliente.persona.microservicio.persistence.entity.ClienteEntity;
 import com.cliente.persona.microservicio.persistence.entity.PersonaEntity;
 import com.cliente.persona.microservicio.persistence.service.ClienteService;

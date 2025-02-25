@@ -1,7 +1,7 @@
 package cliente.persona.microservicio;
 
 import com.cliente.persona.microservicio.core.impl.CoreServicesImpl;
-import com.cliente.persona.microservicio.dto.CreateRequestDto;
+import com.cliente.persona.microservicio.Dto.CreateRequestDto;
 import com.cliente.persona.microservicio.persistence.entity.ClienteEntity;
 import com.cliente.persona.microservicio.persistence.service.ClienteService;
 import com.cliente.persona.microservicio.persistence.service.PersonaService;
@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 public class CoreServicesImplTest {

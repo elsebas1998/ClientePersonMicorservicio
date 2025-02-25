@@ -1,4 +1,4 @@
-package com.cliente.persona.microservicio.dto;
+package com.cuenta.moviemiento.microservicio.Dto;
 
 import java.util.UUID;
 

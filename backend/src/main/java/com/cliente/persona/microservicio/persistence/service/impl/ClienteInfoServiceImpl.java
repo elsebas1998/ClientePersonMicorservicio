@@ -1,10 +1,8 @@
 package com.cliente.persona.microservicio.persistence.service.impl;
 
 import com.cliente.persona.microservicio.config.KafkaTopicConfig;
-import com.cliente.persona.microservicio.core.CoreServices;
-import com.cliente.persona.microservicio.dto.ClienteInfoRequest;
-import com.cliente.persona.microservicio.dto.ClienteInfoResponse;
-import com.cliente.persona.microservicio.dto.ResponseDto;
+import com.cliente.persona.microservicio.Dto.ClienteInfoRequest;
+import com.cliente.persona.microservicio.Dto.ClienteInfoResponse;
 import com.cliente.persona.microservicio.persistence.entity.ClienteEntity;
 import com.cliente.persona.microservicio.persistence.entity.PersonaEntity;
 import com.cliente.persona.microservicio.persistence.service.ClienteService;

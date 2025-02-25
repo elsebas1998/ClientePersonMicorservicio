@@ -1,7 +1,6 @@
 package com.cliente.persona.microservicio.core;
 
-import com.cliente.persona.microservicio.dto.CreateRequestDto;
-import com.cliente.persona.microservicio.persistence.entity.ClienteEntity;
+import com.cliente.persona.microservicio.Dto.CreateRequestDto;
 import org.springframework.http.ResponseEntity;
 
 public interface CoreServices {

@@ -1,4 +1,4 @@
-package com.cliente.persona.microservicio.dto;
+package com.cliente.persona.microservicio.Dto;
 
 import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;

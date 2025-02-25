@@ -1,4 +1,4 @@
-package com.cliente.persona.microservicio.dto;
+package com.cliente.persona.microservicio.Dto;
 
 public class ClienteInfoResponse {
     private String requestId;

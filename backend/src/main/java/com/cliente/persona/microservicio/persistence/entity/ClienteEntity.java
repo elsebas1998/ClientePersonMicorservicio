@@ -1,15 +1,11 @@
 package com.cliente.persona.microservicio.persistence.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Table(name = "cliente")
 public class ClienteEntity extends PersonaEntity {
     private String contrasena;
     private Boolean estado;
